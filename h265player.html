@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Reproducir HLS fMP4 con video.js</title>
+  <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
+</head>
+<body>
+  <video id="video" width="640" height="480" controls>
+    <source src="https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8" type="application/x-mpegURL">
+  </video>
+
+  <script>
+    // Crea el reproductor video.js
+    const video = videojs("video");
+
+    // Crea un objeto Hls y configúralo para usar el codec H265
+    const hls = new Hls();
+    hls.config.videoCodecs = ["h265"];
+
+    // Asigna el objeto Hls al reproductor video.js
+    video.src = hls.loadSource("https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8");
+  </script>
+</body>
+</html>

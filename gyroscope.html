@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // var _r = 0;
+        // var _g = 0;
+        // var _b = 0;
+        // document.body.style.backgroundColor = `rgb(${_r},${_g},${_b})`; 
+        // if (window.DeviceOrientationEvent) {
+        //     window.addEventListener("deviceorientation", function () {
+        //         var _r = 0;
+        //         var _g = 255;
+        //         var _b = 0;
+        //         document.body.style.backgroundColor = `rgb(${_r},${_g},${_b})`; 
+        //         tilt([event.beta, event.gamma]);
+        //     }, true);
+        // } else if (window.DeviceMotionEvent) {
+        //     window.addEventListener('devicemotion', function () {
+        //         var _r = 255;
+        //         var _g = 0;
+        //         var _b = 0;
+        //         document.body.style.backgroundColor = `rgb(${_r},${_g},${_b})`; 
+        //         tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
+        //     }, true);
+        // } else {
+        //     window.addEventListener("MozOrientation", function () {
+        //         var _r = 0;
+        //         var _g = 0;
+        //         var _b = 255;
+        //         document.body.style.backgroundColor = `rgb(${_r},${_g},${_b})`;
+        //         tilt([orientation.x * 50, orientation.y * 50]);
+        //     }, true);
+        // }
+        function handleOrientation(event) {
+            const absolute = event.absolute;
+            const alpha = event.alpha;
+            const beta = event.beta;
+            const gamma = event.gamma;
+
+            document.body.style.backgroundColor = `rgb(${alpha},${beta},${gamma})`;
+            // Do stuff with the new orientation data
+        }
+        window.addEventListener("deviceorientation", handleOrientation, true);
+
+    </script>
+</body>
+</html>

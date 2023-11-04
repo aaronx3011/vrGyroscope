@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bitmovin Player Demo</title>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8" />
+
+  <!-- Bitmovin Player -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bitmovin-player@8/bitmovinplayer.js"></script>
+
+  <style>
+    .player-wrapper {
+      width: 90%;
+      margin: 20px auto;
+      box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body>
+<div class="player-wrapper">
+  <div id="player"></div>
+</div>
+
+<script type="text/javascript">
+  var conf = {
+    key: '897238c2-0700-49ee-9804-1eba7c0c3b9a',
+    analytics: {
+      key: '847726d4-66e2-4283-b956-8f074cfc7db4',
+      title: 'undefined',
+      videoId: 'wizard-untitled-1698377999625',
+    },
+  };
+
+  var source = {
+    title: '',
+    hls: 'https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8',
+  };
+
+  var player = new bitmovin.player.Player(document.getElementById('player'), conf);
+  player.load(source);
+</script>
+
+</body>
+</html>

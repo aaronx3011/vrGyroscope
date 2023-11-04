@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Reproductor de video HLS</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  </head>
+  <body>
+    <video id="video" width="640" height="360"></video>
+    <script>
+      const video = document.getElementById('video');
+      const hls = new Hls();
+      hls.loadSource('http://192.168.1.101:3000/insta/pro2/stream/h264/stream.m3u8');
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play();
+      });
+    </script>
+  </body>
+</html> -->
+
+<!-- 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reproductor de video Shaka</title>
+    <script src="https://cdn.jsdelivr.net/npm/shaka-player@latest"></script>
+  </head>
+  <body>
+    <video id="video" width="640" height="360"></video>
+    <script>
+      const video = document.getElementById('video');
+      const player = new shaka.Player(video);
+      player.load('http://192.168.1.101:3000/insta/pro2/stream/h264/stream.m3u8')
+          .catch(error => console.log('Error al cargar el manifiesto:', error));
+    </script>
+  </body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reproductor de video H.265</title>
+    <script src="https://cdn.jsdelivr.net/npm/h265web.js@latest"></script>
+  </head>
+  <body>
+    <video id="video" width="640" height="360"></video>
+    <script>
+      const video = document.getElementById('video');
+      const player = new H265WebPlayer(video);
+      player.load('http://192.168.1.101:3000/insta/pro2/stream/h265/stream.m3u8');
+    </script>
+  </body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reproductor de video H.265</title>
+    <script src="https://cdn.jsdelivr.net/npm/h265web.js@latest"></script>
+  </head>
+  <body>
+    <video id="video" width="640" height="360"></video>
+    <script>
+      const video = document.getElementById('video');
+      const player = new H265WebPlayer(video);
+      player.load('https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8');
+    </script>
+  </body>
+</html>
