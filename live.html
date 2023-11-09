@@ -120,9 +120,9 @@
             const sphere = document.getElementById("principal-sphere").entity;
 function handleOrientation(event) {
     // With three.js
-    let x = event.beta; // In degree in the range [-180,180)
-    let y = event.gamma;
-    let z = event.alpha;
+    let x = Math.round(event.beta * 1000) / 1000;
+    let y = Math.round(event.gamma * 1000) / 1000;
+    let z = Math.round(event.alpha * 1000) / 1000;
     sphere.rotation.rotate(x,y,z);
 }
 
