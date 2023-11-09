@@ -30,41 +30,61 @@
                     var video = document.getElementById('webcam_stream_ii');
                     if(Hls.isSupported()) {
                     var hls = new Hls();
-                    hls.loadSource('https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8');
+                    hls.loadSource('https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8');
                     hls.attachMedia(video);
                     hls.on(Hls.Events.MANIFEST_PARSED,function() {
                         video.play();
                     });
                 }
                 else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = 'https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8';
+                    video.src = 'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8';
                     video.addEventListener('loadedmetadata',function() {
                         video.play();
                     });
                     }
                 }
+                
             })
-            AFRAME.registerComponent('youtube_stream', {
-                init: function() {
-                  var video = document.getElementById('youtube_stream_play');
-                  var youtube_id = 'tfAWpOq8OPI'; //Reemplazar esta variable con el ID del vídeo en YouTube que quieres reproducir.
-                  var youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id;
+            // AFRAME.registerComponent('hls_stream_ii', {
+            //     init: function(){
+            //         var video = document.getElementById('webcam_stream_ii');
+            //         if(Hls.isSupported()) {
+            //         var hls = new Hls();
+            //         hls.loadSource('https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8');
+            //         hls.attachMedia(video);
+            //         hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            //             video.play();
+            //         });
+            //     }
+            //     else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            //         video.src = 'https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8';
+            //         video.addEventListener('loadedmetadata',function() {
+            //             video.play();
+            //         });
+            //         }
+            //     }
+            // })
+            // AFRAME.registerComponent('youtube_stream', {
+            //     init: function() {
+            //       var video = document.getElementById('youtube_stream_play');
+            //       var youtube_id = 'tfAWpOq8OPI'; //Reemplazar esta variable con el ID del vídeo en YouTube que quieres reproducir.
+            //       var youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id;
         
-                  if (Hls.isSupported()) {
-                    var hls = new Hls();
-                    hls.loadSource(youtube_url);
-                    hls.attachMedia(video);
-                    hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                      video.play();
-                    });
-                  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = youtube_url;
-                    video.addEventListener('loadedmetadata', function() {
-                      video.play();
-                    });
-                  }
-                }
-              });
+            //       if (Hls.isSupported()) {
+            //         var hls = new Hls();
+            //         hls.loadSource(youtube_url);
+            //         hls.attachMedia(video);
+            //         hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            //           video.play();
+            //         });
+            //       } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            //         video.src = youtube_url;
+            //         video.addEventListener('loadedmetadata', function() {
+            //           video.play();
+            //         });
+            //       }
+            //     }
+            //   });
           </script>
     </head>   
     <body>
@@ -76,14 +96,14 @@
             </a-assets>
 
             <!--Reproductores 3D-->
-            <a-entity geometry="primitive: sphere; thetaLength: 180; radius: 5000; segmentsWidth: 64; segmentsHeight: 20" scale="1 1 -1" material="src: #webcam_stream; shader: flat"></a-entity>
-            <!-- <a-sphere theta-length="180" id= "principal-sphere" src="#webcam_stream" position="0 0 0" rotation="180 0 0" hls_stream></a-sphere> -->
-            <!-- <a-plane src="#webcam_stream_ii" position="0 1.5 -4" rotation="0 0 0" width="2" height="1.5" hls_stream_ii></a-plane>
-            <a-plane src="#webcam_stream" position="-3 1.5 -3" rotation="0 45 0" width="2" height="1.5"></a-plane>
+            <!-- <a-sphere id= "principal-sphere" src="#webcam_stream" radius="-150" position="0 0 0" rotation="180 0 0" hls_stream></a-sphere> -->
+            <!-- <a-entity id= "main-display" src="#webcam_stream" sas= "primitive:plane; heigth: 10; widht: 20" material="side: double"></a-entity> -->
+            <a-plane src="#webcam_stream_ii" position="-4 15 -40" rotation="0 0 0" width="192" height="108" hls_stream_ii></a-plane>
+            <!-- <a-plane src="#webcam_stream" position="-3 1.5 -3" rotation="0 45 0" width="2" height="1.5"></a-plane>
             <a-plane src="#webcam_stream_ii" position="-4.5 1.5 0" rotation="0 90 0" width="2" height="1.5"></a-plane>
             <a-plane src="#youtube_stream_play" position="-3 1.5 3" rotation="0 135 0" width="2" height="1.5" youtube_stream></a-plane>
-            <a-plane src="#webcam_stream_ii" position="0 1.5 4" rotation="0 180 0" width="2" height="1.5"></a-plane>
-            <a-plane src="#webcam_stream" position="3 1.5 3" rotation="0 225 0" width="2" height="1.5"></a-plane>
+            <a-plane src="#webcam_stream_ii" position="0 1.5 4" rotation="0 180 0" width="2" height="1.5"></a-plane> -->
+            <!-- <a-plane src="#webcam_stream" position="3 1.5 3" rotation="0 225 0" width="2" height="1.5"></a-plane>
             <a-plane src="#webcam_stream_ii" position="4.5 1.5 0" rotation="0 270 0" width="2" height="1.5"></a-plane>
             <a-plane src="#youtube_stream_play" position="3 1.5 -3" rotation="0 315 0" width="2" height="1.5"></a-plane> -->
 
