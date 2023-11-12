@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Conten-Type" content="text/html; chatset=utf-8">
+        <title>VIDEO 360</title>
+    </head>
+    <body>
+        <!-- 1- DIV DONDE ESTARÁ ALOJADO EL REPRODUCTOR-->
+        <!-- <video src="VipOBS.mp4" autoplay></video> -->
+        <div id="player"></div>
+
+        <!-- 2- SE INCLUYE EL PLUGIN Y EL PLUGIN DEL REPRODUCTOR 360-->
+        <!-- <script src="https://cdn.jsdelivr.net/gh/clappr/clappr@latest/dist/clappr.min.js"></script>
+        <script src="https://cdn.rawgit.com/thiagopnts/clappr-video360/master/dist/clappr-video360.min.js"></script> -->
+
+        <script type="text/javascript" charset="utf-8" src="node_modules/clappr/dist/clappr.min.js"> </script>
+        <script type="text/javascript" charset="utf-8" src="node_modules/clappr-video360/dist/clappr-video360.min.js"> </script>
+
+        <!-- 3- CONFIGURAR EL REPRODUCTOR CLAPPR-->
+        <script>
+            // URL DEL 360 
+   
+   // URL DEL 360 
+var Video360Url = "https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8";
+//https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8
+//https://vrinsitu-aaron-bucket.s3.amazonaws.com/stream.m3u8
+           
+// CONFIGURACIÓN DEL REPRODUCTOR CLAPPR
+var PlayerInstance = new Clappr.Player({
+  source: Video360Url,
+  plugins: {
+      container: [Video360],
+  },
+  parentId: '#player',
+});
+
+// Importante : hay que desactivar el clic que detiene el plugin de clappr
+// de lo contrario el reproductor no se podrá usar correctamente
+PlayerInstance.getPlugin('click_to_pause').disable();
+
+// Establecer la fuente del plugin videojs-hls
+PlayerInstance.getPlugin('videojs-hls').src = Video360Url;
+   
+   </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+   ¡¡¡ Primer Código JS !!!
+
+    var Video360Url = "https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8";
+    
+            //https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8
+            //https://vrinsitu-aaron-bucket.s3.amazonaws.com/stream.m3u8
+           
+            // CONFIGURACIÓN DEL REPRODUCTOR CLAPPR
+            var PlayerInstance = new Clappr.Player({
+                source: Video360Url,
+                plugins: {
+                    container: [Video360],
+                },
+                parentId: '#player',
+            });
+            // Importante : hay que desactivar el clic que detiene el plugin de clappr
+            // de lo contrario el reproductor no se podrá usar correctamente
+            PlayerInstance.getPlugin('click_to_pause').disable();
+-->
