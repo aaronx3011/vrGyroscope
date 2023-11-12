@@ -93,11 +93,41 @@
                 <video id="webcam_stream" autoplay playsinline muted loop="true" crossorigin="anonymous"></video> <!--asset del AFRAME.registerComponent('hls_stream'-->
                 <video id="webcam_stream_ii" autoplay playsinline muted loop="true" crossorigin="anonymous"></video> <!--asset del AFRAME.registerComponent('hls_stream_ii'-->
                 <video id="youtube_stream" autoplay playsinline muted loop="true" crossorigin="anonymous"></video> <!--asset del AFRAME.registerComponent('youtube_stream'-->
+                <!-- <img id="img" crossorigin="anonymous" src="https://grupoaudiovisual.com/wp-content/uploads/2021/01/Playa-mar-mediterraneo-descargas-gratis-360-en-GrupoAudiovisual-01.jpg" /> -->
             </a-assets>
 
             <!--Reproductores 3D-->
             <!-- <a-sphere id= "principal-sphere" src="#webcam_stream" radius="-150" position="0 0 0" rotation="180 0 0" hls_stream></a-sphere> -->
-            <a-entity id= "principal-sphere" geometry= "primitive:sphere; radius: -10; phi-start: 30; phi-length: 120; theta-length: 60; theta-start: 45;" position="0 0 2" rotation="0 0 180" material="src:#webcam_stream" hls_stream></a-entity>
+            <a-entity
+                id= "principal-sphere" 
+                geometry= "primitive:sphere; radius: -10; phi-start: 0; phi-length: 180; theta-length: 95; theta-start: 45; side: double" 
+                position="0 0 2" 
+                rotation="0 0 180" 
+                material="src:#webcam_stream" 
+                hls_stream>
+            </a-entity>
+            <a-entity
+                id= "principal-sphere" 
+                geometry= "primitive:sphere; radius: -10.2;" 
+                position="0 0 2" 
+                rotation="0 0 180" 
+            </a-entity>
+            </a-entity>
+            <a-entity
+                id= "contadorPuntaje"
+                geometry= "primitive:plane; width: 3; height: 2;"
+                position="0 5.5 -4" 
+                rotation="0 0 0" 
+                scale= "1 1 1"
+            >
+            </a-entity>
+            <a-text
+                value=" 3 - 0"
+                width="30"
+                position="-1.5 5.5 -3.9"
+                rotation="0 0 0"
+                >
+            </a-text>
             <!-- <a-entity id= "main-display" src="#webcam_stream" sas= "primitive:plane; heigth: 10; widht: 20" material="side: double"></a-entity> -->
             <!-- <a-entity id= "principal-sphere" geometry="primitive: cylinder; radius: 6; side: double; segmentsHeight:10; segments-radial:60; thetaLength: -140; height: 8; openEnded: true"       
                 material="src:#webcam_stream" position="0 2 0" rotation="0 -90 0" hls_stream></a-entity> -->
