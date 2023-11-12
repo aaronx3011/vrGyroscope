@@ -1,0 +1,165 @@
+<!--ejecutar con "npx serve". Te generá una ip. Pulsa Ctrl+ClickIzq sobre la ip y luego "Open" entre las opciones del cuadro emergente para verlo en el browser-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+        <script>
+            AFRAME.registerComponent('hls_stream', {
+                init: function(){
+                    var video = document.getElementById('webcam_stream');
+                    if(Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource('https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8');
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                        video.play();
+                    });
+                }
+                else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = 'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8';
+                    video.addEventListener('loadedmetadata',function() {
+                        video.play();
+                    });
+                    }
+                }
+                
+            })
+            AFRAME.registerComponent('hls_stream_ii', {
+                init: function(){
+                    var video = document.getElementById('webcam_stream_ii');
+                    if(Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource('https://vrinsitu-aaron-bucket.s3.amazonaws.com/test.m3u8');
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                        video.play();
+                    });
+                }
+                else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = 'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8';
+                    video.addEventListener('loadedmetadata',function() {
+                        video.play();
+                    });
+                    }
+                }
+                
+            })
+            // AFRAME.registerComponent('hls_stream_ii', {
+            //     init: function(){
+            //         var video = document.getElementById('webcam_stream_ii');
+            //         if(Hls.isSupported()) {
+            //         var hls = new Hls();
+            //         hls.loadSource('https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8');
+            //         hls.attachMedia(video);
+            //         hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            //             video.play();
+            //         });
+            //     }
+            //     else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            //         video.src = 'https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8';
+            //         video.addEventListener('loadedmetadata',function() {
+            //             video.play();
+            //         });
+            //         }
+            //     }
+            // })
+            // AFRAME.registerComponent('youtube_stream', {
+            //     init: function() {
+            //       var video = document.getElementById('youtube_stream_play');
+            //       var youtube_id = 'tfAWpOq8OPI'; //Reemplazar esta variable con el ID del vídeo en YouTube que quieres reproducir.
+            //       var youtube_url = 'https://www.youtube.com/watch?v=' + youtube_id;
+        
+            //       if (Hls.isSupported()) {
+            //         var hls = new Hls();
+            //         hls.loadSource(youtube_url);
+            //         hls.attachMedia(video);
+            //         hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            //           video.play();
+            //         });
+            //       } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            //         video.src = youtube_url;
+            //         video.addEventListener('loadedmetadata', function() {
+            //           video.play();
+            //         });
+            //       }
+            //     }
+            //   });
+          </script>
+    </head>   
+    <body>
+        <a-scene cursor="rayOrigin:mouse">
+            <a-assets>
+                <video id="webcam_stream" autoplay playsinline muted loop="true" crossorigin="anonymous"></video> <!--asset del AFRAME.registerComponent('hls_stream'-->
+                <video id="webcam_stream_ii" autoplay playsinline muted loop="true" crossorigin="anonymous"></video> <!--asset del AFRAME.registerComponent('hls_stream_ii'-->
+                <video id="youtube_stream" autoplay playsinline muted loop="true" crossorigin="anonymous"></video> <!--asset del AFRAME.registerComponent('youtube_stream'-->
+                <!-- <img id="img" crossorigin="anonymous" src="https://grupoaudiovisual.com/wp-content/uploads/2021/01/Playa-mar-mediterraneo-descargas-gratis-360-en-GrupoAudiovisual-01.jpg" /> -->
+            </a-assets>
+
+            <!--Reproductores 3D-->
+            <!-- <a-sphere id= "principal-sphere" src="#webcam_stream" radius="-150" position="0 0 0" rotation="180 0 0" hls_stream></a-sphere> -->
+            <a-entity
+                id= "principal-sphere" 
+                geometry= "primitive:sphere; radius: -10; phi-start: 0; phi-length: 180; theta-length: 95; theta-start: 45; side: double" 
+                position="0 0 2" 
+                rotation="0 0 180" 
+                material="src:#webcam_stream" 
+                hls_stream>
+            </a-entity>
+            <a-entity
+                id= "principal-sphere" 
+                geometry= "primitive:sphere; radius: -10.2;" 
+                position="0 0 2" 
+                rotation="0 0 180" 
+                material="src:#webcam_stream" 
+                hls_stream>
+            </a-entity>
+            </a-entity>
+            <a-entity
+                id= "contadorPuntaje"
+                geometry= "primitive:plane; width: 3; height: 2;"
+                position="0 5.5 -4" 
+                rotation="0 0 0" 
+                scale= "1 1 1"
+            >
+            </a-entity>
+            <a-text
+                value=" 3 - 0"
+                width="30"
+                position="-1.5 5.5 -3.9"
+                rotation="0 0 0"
+                >
+            </a-text>
+            <!-- <a-entity id= "main-display" src="#webcam_stream" sas= "primitive:plane; heigth: 10; widht: 20" material="side: double"></a-entity> -->
+            <!-- <a-entity id= "principal-sphere" geometry="primitive: cylinder; radius: 6; side: double; segmentsHeight:10; segments-radial:60; thetaLength: -140; height: 8; openEnded: true"       
+                material="src:#webcam_stream" position="0 2 0" rotation="0 -90 0" hls_stream></a-entity> -->
+            <!-- <a-plane src="#webcam_stream_ii" position="-4 15 -40" rotation="0 0 0" width="192" height="108" hls_stream_ii></a-plane> -->
+            <!-- <a-plane src="#webcam_stream" position="-3 1.5 -3" rotation="0 45 0" width="2" height="1.5"></a-plane>
+            <a-plane src="#webcam_stream_ii" position="-4.5 1.5 0" rotation="0 90 0" width="2" height="1.5"></a-plane>
+            <a-plane src="#youtube_stream_play" position="-3 1.5 3" rotation="0 135 0" width="2" height="1.5" youtube_stream></a-plane>
+            <a-plane src="#webcam_stream_ii" position="0 1.5 4" rotation="0 180 0" width="2" height="1.5"></a-plane> -->
+            <!-- <a-plane src="#webcam_stream" position="3 1.5 3" rotation="0 225 0" width="2" height="1.5"></a-plane>
+            <a-plane src="#webcam_stream_ii" position="4.5 1.5 0" rotation="0 270 0" width="2" height="1.5"></a-plane>
+            <a-plane src="#youtube_stream_play" position="3 1.5 -3" rotation="0 315 0" width="2" height="1.5"></a-plane> -->
+            <!-- <a-cylinder color="yellow" theta-start="0" theta-length="180" side="double" ></a-cylinder> -->
+
+          
+            <!-- <a-entity id="camera"  wasd-controls camera look-controls></a-entity> -->
+            <a-sky color="#111"></a-sky>
+        </a-scene>
+        <script>
+
+            const sphere = document.getElementById("principal-sphere").entity;
+function handleOrientation(event) {
+    // With three.js
+    let x = Math.round(event.beta * 1000) / 1000;
+    let y = Math.round(event.gamma * 1000) / 1000;
+    let z = Math.round(event.alpha * 1000) / 1000;
+    sphere.rotation.rotate(x,y,z);
+}
+
+window.addEventListener("deviceorientation", handleOrientation);
+
+        </script>
+    </body>
+</html>
