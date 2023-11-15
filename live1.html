@@ -10,14 +10,14 @@
                     var video = document.getElementById('webcam_stream');
                     if(Hls.isSupported()) {
                     var hls = new Hls();
-                    hls.loadSource('https://d24kug3sdxv04h.cloudfront.net/web-1.0/metalive/16nov23/cam1/stream.m3u8');
+                    hls.loadSource('https://vr-insitu-public-cdn/web-1.0/metalive/16nov23/cam1/stream.m3u8');
                     hls.attachMedia(video);
                     hls.on(Hls.Events.MANIFEST_PARSED,function() {
                         video.play();
                     });
                 }
                 else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = 'https://d24kug3sdxv04h.cloudfront.net/web-1.0/metalive/16nov23/cam1/stream.m3u8';
+                    video.src = 'https://vr-insitu-public-cdn/web-1.0/metalive/16nov23/cam1/stream.m3u8';
                     video.addEventListener('loadedmetadata',function() {
                         video.play();
                     });
